@@ -1,4 +1,4 @@
-package day1
+package day7
 
 import (
 	"fmt"
@@ -10,9 +10,9 @@ import (
 )
 
 var Cmd = &cobra.Command{
-	Use:   "day1",
-	Short: "day1",
-	Long:  "day1",
+	Use:   "day7",
+	Short: "day7",
+	Long:  "day7",
 	Run: func(cmd *cobra.Command, args []string) {
 		execute(cmd.Parent().Name(), cmd.Name())
 	},

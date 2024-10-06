@@ -15,7 +15,6 @@ var Cmd = &cobra.Command{
 	Long:  "day2",
 	Run: func(cmd *cobra.Command, args []string) {
 		execute(cmd.Parent().Name(), cmd.Name())
-		fmt.Println("Running Day 2 solution")
 	},
 }
 

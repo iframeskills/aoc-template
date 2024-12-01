@@ -2,7 +2,9 @@ package day1
 
 import (
 	"fmt"
+	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -55,6 +57,20 @@ func readInputToArrays(input string) ([]int, []int, error) {
 	return left, right, nil
 }
 
+func calculateTotalDistance(left, right []int) int {
+	// Sort both lists
+	sort.Ints(left)
+	sort.Ints(right)
+
+	// Calculate the total distance
+	totalDistance := 0
+	for i := 0; i < len(left); i++ {
+		totalDistance += int(math.Abs(float64(left[i] - right[i])))
+	}
+
+	return totalDistance
+}
+
 func part1(s string) int64 {
 	var score int64
 	var left, right, err = readInputToArrays(s)
@@ -62,8 +78,7 @@ func part1(s string) int64 {
 		fmt.Println("Error:", err)
 		return score
 	}
-	fmt.Println(left)
-	fmt.Println(right)
+	score = int64(calculateTotalDistance(left, right))
 
 	return score
 }

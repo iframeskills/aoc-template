@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"aoc/cmd/year2023"
+	"aoc/cmd/year2024"
 	"fmt"
 	"os"
 
@@ -23,5 +23,5 @@ func Execute() {
 
 func init() {
 	// Add year-specific commands here
-	rootCmd.AddCommand(year2023.Cmd)
+	rootCmd.AddCommand(year2024.Cmd)
 }

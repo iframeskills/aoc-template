@@ -28,7 +28,7 @@ func execute(parent, command string) {
 	}
 
 	logrus.Infof("score part1: %d", part1(string(b)))
-	// logrus.Infof("score part2: %d", part2(string(b)))
+	logrus.Infof("score part2: %d", part2(string(b)))
 }
 
 func readInputToArrays(input string) ([]int, []int, error) {
@@ -55,6 +55,22 @@ func readInputToArrays(input string) ([]int, []int, error) {
 		right = append(right, rightNum)
 	}
 	return left, right, nil
+}
+
+func similarityScore(left, right []int) int64 {
+	// Create a map to count occurrences of numbers in the right list
+	rightCount := make(map[int]int)
+	for _, num := range right {
+		rightCount[num]++
+	}
+
+	// Calculate the similarity score
+	score := 0
+	for _, num := range left {
+		score += num * rightCount[num]
+	}
+
+	return int64(score)
 }
 
 func calculateTotalDistance(left, right []int) int {
@@ -84,5 +100,15 @@ func part1(s string) int64 {
 }
 
 func part2(s string) int64 {
-	return 0
+	var score int64
+
+	var left, right, err = readInputToArrays(s)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return score
+	}
+
+	score = similarityScore(left, right)
+
+	return score
 }
